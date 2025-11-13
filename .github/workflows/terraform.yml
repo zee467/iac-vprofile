@@ -34,7 +34,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
       - name: Terraform init  # Initializes the Terraform backend (your S3 bucket).
         id: init
-        run: terraform init backend-config="bucket=$BUCKET_TF_STATE"
+        run: terraform init -backend-config="bucket=$BUCKET_TF_STATE" -backend-config="region=$AWS_REGION"
       - name: Terraform format
         id: fmt
         run: terraform fmt -check
